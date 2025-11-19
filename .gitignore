@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Allure
+allure-results/
+allure-report/
+
+# Playwright
+screenshots/
+videos/
+test-results/
+playwright-report/
+.auth/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env
+!.env.example
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Misc
+*.tmp
+*.bak
+.cache/
