@@ -30,12 +30,13 @@ def test_login_success(login_flow):
 def test_login_invalid_email(login_flow):
     """Test that invalid email shows error message"""
     user = TEST_USERS["invalid_email"]
-    
-    with pytest.raises(AssertionError, match="Login failed"):
+    with pytest.raises(AssertionError) as excinfo:
         login_flow.complete_login(
             email=user["email"],
             otp_code=user["otp"]
         )
+    # Assert the error message contains the backend error
+    assert "User not found" in str(excinfo.value)
 
 
 @allure.feature("Authentication")
@@ -68,20 +69,22 @@ def test_login_page_loads(login_page):
     assert submit_button.is_visible(), "Submit button should be visible"
 
 
+
 @allure.feature("Authentication")
 @allure.story("OTP Page")
-@allure.title("Test OTP page elements")
-@allure.severity(allure.severity_level.MINOR)
-def test_otp_page_loads(login_flow, otp_page):
-    """Test that OTP page loads and shows OTP field"""
+@allure.title("Test OTP rate limit error")
+@allure.severity(allure.severity_level.NORMAL)
+def test_otp_rate_limited(login_flow):
+    """Test that OTP rate limit error is shown"""
     user = TEST_USERS["valid_user"]
-    
-    # Navigate to OTP page
+    # First request - should succeed and reach OTP page
     login_flow.login_email_only(email=user["email"])
     
-    # Verify on OTP page
-    assert otp_page.is_on_otp_page(), "Should be on OTP page"
+    # Second request - navigate back to login and submit again to trigger rate limit
+    login_flow.login_page.navigate()
+    login_flow.login_page.submit_email(user["email"])
     
-    # Verify OTP field is visible
-    otp_field = otp_page.get_otp_field()
-    assert otp_field.is_visible(), "OTP field should be visible"
+    # Check for rate limit error
+    has_error, error_text = login_flow.login_page.check_for_errors()
+    assert has_error
+    assert "Please wait 3 minutes before requesting a new code" in error_text

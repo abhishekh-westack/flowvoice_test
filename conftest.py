@@ -44,25 +44,25 @@ def context(browser, request):
         if test_failed:
             try:
                 # Upload to GCS first
-                video_url = gcs.upload_video(str(video_path), request.node.name)
+                # video_url = gcs.upload_video(str(video_path), request.node.name)
                 
-                if video_url and gcs.enabled:
-                    # Attach GCS URL as link instead of embedding video
-                    allure.attach(
-                        video_url,
-                        name="Video (GCS)",
-                        attachment_type=allure.attachment_type.URI_LIST,
-                    )
-                    print(f"✓ Video URL attached to Allure: {video_url}")
+                # if video_url and gcs.enabled:
+                #     # Attach GCS URL as link instead of embedding video
+                #     allure.attach(
+                #         video_url,
+                #         name="Video (GCS)",
+                #         attachment_type=allure.attachment_type.URI_LIST,
+                #     )
+                #     print(f"✓ Video URL attached to Allure: {video_url}")
                     
-                    # Delete local file after successful upload (if configured)
-                    if DELETE_LOCAL_AFTER_GCS_UPLOAD:
-                        try:
-                            os.remove(video_path)
-                            print(f"✓ Deleted local video (uploaded to GCS)")
-                        except Exception as del_error:
-                            print(f"⚠ Could not delete local video: {del_error}")
-                else:
+                #     # Delete local file after successful upload (if configured)
+                #     if DELETE_LOCAL_AFTER_GCS_UPLOAD:
+                #         try:
+                #             os.remove(video_path)
+                #             print(f"✓ Deleted local video (uploaded to GCS)")
+                #         except Exception as del_error:
+                #             print(f"⚠ Could not delete local video: {del_error}")
+                # else:
                     # Fallback: embed video if GCS upload failed
                     with open(video_path, "rb") as vf:
                         allure.attach(
@@ -86,47 +86,48 @@ def page(context, request):
     page = context.new_page()
     yield page
 
-    test_failed = hasattr(request.node, "rep_call") and request.node.rep_call.failed
-    
-    # Get GCS uploader
-    gcs = get_gcs_uploader()
-
-    if test_failed:
-        screenshot_dir = Path("screenshots/failures")
-        screenshot_dir.mkdir(parents=True, exist_ok=True)
-
-        screenshot_path = screenshot_dir / f"{request.node.name}.png"
-
-        screenshot_bytes = page.screenshot(path=str(screenshot_path))
-
-        # Upload to GCS first
-        screenshot_url = gcs.upload_screenshot(str(screenshot_path), request.node.name)
-        
-        if screenshot_url and gcs.enabled:
-            # Attach GCS URL as link instead of embedding image
-            allure.attach(
-                screenshot_url,
-                name="Screenshot (GCS)",
-                attachment_type=allure.attachment_type.URI_LIST,
-            )
-            print(f"✓ Screenshot URL attached to Allure: {screenshot_url}")
-            
-            # Delete local file after successful upload (if configured)
-            if DELETE_LOCAL_AFTER_GCS_UPLOAD:
-                try:
-                    os.remove(screenshot_path)
-                    print(f"✓ Deleted local screenshot (uploaded to GCS)")
-                except Exception as del_error:
-                    print(f"⚠ Could not delete local screenshot: {del_error}")
-        else:
-            # Fallback: embed screenshot if GCS upload failed
-            allure.attach(
-                screenshot_bytes,
-                name=f"{request.node.name}_screenshot",
-                attachment_type=allure.attachment_type.PNG,
-            )
-            print(f"✓ Screenshot embedded in Allure: {screenshot_path}")
-
+    # --- Screenshot logic commented out ---
+    # test_failed = hasattr(request.node, "rep_call") and request.node.rep_call.failed
+    # 
+    # # Get GCS uploader
+    # gcs = get_gcs_uploader()
+    #
+    # if test_failed:
+    #     screenshot_dir = Path("screenshots/failures")
+    #     screenshot_dir.mkdir(parents=True, exist_ok=True)
+    #
+    #     screenshot_path = screenshot_dir / f"{request.node.name}.png"
+    #
+    #     screenshot_bytes = page.screenshot(path=str(screenshot_path))
+    #
+    #     # Upload to GCS first
+    #     screenshot_url = gcs.upload_screenshot(str(screenshot_path), request.node.name)
+    #     
+    #     if screenshot_url and gcs.enabled:
+    #         # Attach GCS URL as link instead of embedding image
+    #         allure.attach(
+    #             screenshot_url,
+    #             name="Screenshot (GCS)",
+    #             attachment_type=allure.attachment_type.URI_LIST,
+    #         )
+    #         print(f"✓ Screenshot URL attached to Allure: {screenshot_url}")
+    #         
+    #         # Delete local file after successful upload (if configured)
+    #         if DELETE_LOCAL_AFTER_GCS_UPLOAD:
+    #             try:
+    #                 os.remove(screenshot_path)
+    #                 print(f"✓ Deleted local screenshot (uploaded to GCS)")
+    #             except Exception as del_error:
+    #                 print(f"⚠ Could not delete local screenshot: {del_error}")
+    #     else:
+    #         # Fallback: embed screenshot if GCS upload failed
+    #         allure.attach(
+    #             screenshot_bytes,
+    #             name=f"{request.node.name}_screenshot",
+    #             attachment_type=allure.attachment_type.PNG,
+    #         )
+    #         print(f"✓ Screenshot embedded in Allure: {screenshot_path}")
+    # --- End screenshot logic ---
     page.close()
 
 

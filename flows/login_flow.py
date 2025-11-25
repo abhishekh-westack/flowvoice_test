@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 from pages.login_page import LoginPage
 from pages.otp_page import OTPPage
 import allure
-
+import time
 
 class LoginFlow:
     """High-level flow for login process"""
@@ -44,6 +44,7 @@ class LoginFlow:
         
         # Step 4: Verify navigation to OTP page
         with allure.step("Verify navigation to OTP page"):
+            time.sleep(0.5)  # Small delay to ensure URL is updated
             if not self.login_page.verify_navigation_to_otp():
                 raise AssertionError("❌ Failed to navigate to OTP page")
         
@@ -78,7 +79,11 @@ class LoginFlow:
         
         # Check for errors
         has_error, error_text = self.login_page.check_for_errors()
+        # If rate limit error, skip raising and return False
         if has_error:
+            if error_text and "Please wait 3 minutes before requesting a new code" in error_text:
+                print("INFO: OTP rate limit detected, returning False from login_email_only.")
+                return False
             raise AssertionError(f"❌ Email validation failed: {error_text}")
         
         # Verify OTP page

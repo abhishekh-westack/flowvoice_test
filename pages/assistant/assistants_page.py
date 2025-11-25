@@ -5,10 +5,10 @@ class AssistantsPage(BasePage):
     """Page object for the Assistants listing page"""
 
     CREATE_NEW_BUTTON = "button:has-text('Create New')"  # or use data-testid if available
-    MODAL_TITLE = "text=Create Assistant"
+    MODAL_TITLE = "text=Create New Assistant"
     TYPE_OPTION = "div[role='button']"   # You should replace with better selector! (e.g. data-testid)
-    NAME_INPUT = "input[placeholder*='Name']"
-    CREATE_BUTTON = "button:has-text('Create Assistant')"
+    NAME_INPUT = "input[name=\"name\"]"
+    CREATE_BUTTON = "button:has-text('Create New Assistant')"
 
     def open(self, base_url: str):
         self.navigate(f"{base_url}/assistants")

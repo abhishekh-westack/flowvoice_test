@@ -1,3 +1,4 @@
+from config.env import LOGIN_EMAIL, LOGIN_CODE
 # fixtures/test_data.py
 """
 Test data for various test scenarios
@@ -6,8 +7,8 @@ Test data for various test scenarios
 # User credentials
 TEST_USERS = {
     "valid_user": {
-        "email": "abhishekh.ojha@westack.ai",
-        "otp": "1111",
+        "email": LOGIN_EMAIL,
+        "otp": LOGIN_CODE,
         "description": "Valid user for successful login"
     },
     "invalid_email": {

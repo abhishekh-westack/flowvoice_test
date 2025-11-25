@@ -9,13 +9,18 @@ from dotenv import load_dotenv
 load_dotenv()
 app = FastAPI()
 
-# Map endpoints to test file paths
 TEST_PATHS = {
     "test-login": "tests/login/test_login.py",
     "test-signup": "tests/signup/test_signup.py",  # Update path as needed
     "test-dashboard": "tests/dashboard/test_dashboard.py",  # Update path as needed
-    "test-assistant-creation": "tests/assistants/test_create_assistant.py"
+    "test-assistant-creation": "tests/assistants/test_create_assistant.py",
+    "test-voice-type": "tests/assistants/updates/voice/"
 }
+# Endpoint to run all voice assistant tab tests
+@app.post("/test-voice-type")
+def test_voice_type():
+    run_pytest(TEST_PATHS["test-voice-type"])
+    return {"test_started": True}
 
 RESULTS_DIR = "allure-results"
 REPORT_DIR = "allure-report"

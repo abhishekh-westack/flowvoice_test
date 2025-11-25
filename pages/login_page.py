@@ -22,6 +22,8 @@ class LoginPage(BasePage):
             '.text-destructive',       # ShadCN errors
             '[data-error]',            # Custom errors
             '#email-error',            # Common pattern
+            'section.Toastify',        # Toastify popup container
+            'section.Toastify *',      # Any child of Toastify popup
         ]
     
     def navigate(self):
@@ -55,13 +57,13 @@ class LoginPage(BasePage):
         Returns: (has_error: bool, error_text: str)
         """
         self.wait_for_timeout(1500)  # Wait for error to appear
-        
         for selector in self._error_selectors:
             locator = self.page.locator(selector)
             if locator.count() > 0:
                 error_text = locator.first.text_content()
-                return True, error_text
-        
+                if error_text and error_text.strip():  # Only return if text is not empty
+                    print(f"DEBUG: Found error with selector {selector}: {error_text}")
+                    return True, error_text.strip()
         return False, ""
     
     def submit_email(self, email: str):
