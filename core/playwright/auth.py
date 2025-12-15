@@ -19,7 +19,7 @@ class AuthService:
         print("Login URL:", url)
         print("Payload:", payload)
 
-        res = requests.post(url, data=payload)
+        res = requests.post(url, json=payload)
 
         print("Status:", res.status_code)
         print("Raw Response:", res.text)

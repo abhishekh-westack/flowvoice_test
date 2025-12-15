@@ -14,8 +14,44 @@ TEST_PATHS = {
     "test-signup": "tests/signup/test_signup.py",  # Update path as needed
     "test-dashboard": "tests/dashboard/test_dashboard.py",  # Update path as needed
     "test-assistant-creation": "tests/assistants/test_create_assistant.py",
-    "test-voice-type": "tests/assistants/updates/voice/"
+    "test-voice-type": "tests/assistants/updates/voice/",
+    "test-create-assistant-all-types": "tests/assistants/test_create_assistant_all_types.py",
+    "test-update-assistant-basic": "tests/assistants/test_update_assistant_basic.py",
+    "test-delete-assistant": "tests/assistants/test_delete_assistant.py",
+    "test-whatsapp-general-tab": "tests/assistants/updates/whatsapp/test_whatsapp_general_tab.py",
+    "test-chatbot-general-tab": "tests/assistants/updates/chat/test_chatbot_general_tab.py",
+    "test-sms-general-tab": "tests/assistants/updates/sms/test_sms_general_tab.py"
 }
+# Additional endpoints for missing tests
+@app.post("/test-create-assistant-all-types")
+def test_create_assistant_all_types():
+    run_pytest(TEST_PATHS["test-create-assistant-all-types"])
+    return {"test_started": True}
+
+@app.post("/test-update-assistant-basic")
+def test_update_assistant_basic():
+    run_pytest(TEST_PATHS["test-update-assistant-basic"])
+    return {"test_started": True}
+
+@app.post("/test-delete-assistant")
+def test_delete_assistant():
+    run_pytest(TEST_PATHS["test-delete-assistant"])
+    return {"test_started": True}
+
+@app.post("/test-whatsapp-general-tab")
+def test_whatsapp_general_tab():
+    run_pytest(TEST_PATHS["test-whatsapp-general-tab"])
+    return {"test_started": True}
+
+@app.post("/test-chatbot-general-tab")
+def test_chatbot_general_tab():
+    run_pytest(TEST_PATHS["test-chatbot-general-tab"])
+    return {"test_started": True}
+
+@app.post("/test-sms-general-tab")
+def test_sms_general_tab():
+    run_pytest(TEST_PATHS["test-sms-general-tab"])
+    return {"test_started": True}
 # Endpoint to run all voice assistant tab tests
 @app.post("/test-voice-type")
 def test_voice_type():

@@ -7,9 +7,6 @@ from config.env import LOGIN_EMAIL, LOGIN_CODE, LOGIN_COMPANY_ID
 import re
 @allure.story("Assistant Creation")
 @allure.title("Create a new assistant successfully")
-LOGIN_EMAIL = LOGIN_EMAIL
-LOGIN_CODE = LOGIN_CODE
-LOGIN_COMPANY_ID = LOGIN_COMPANY_ID
 
 def test_create_assistant(page):
     # 1. Login via API
