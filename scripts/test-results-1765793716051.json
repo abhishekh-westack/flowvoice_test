@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Login Tests",
+    "endpoint": "/test-login",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:12.819Z"
+  },
+  {
+    "name": "Users List Tests",
+    "endpoint": "/test-users-list",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:17.847Z"
+  },
+  {
+    "name": "User Detail Tests",
+    "endpoint": "/test-user-detail",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:22.875Z"
+  },
+  {
+    "name": "Contacts List Tests",
+    "endpoint": "/test-contacts-list",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:27.937Z"
+  },
+  {
+    "name": "Contact Form Tests",
+    "endpoint": "/test-contact-form",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:33.186Z"
+  },
+  {
+    "name": "Assistant Creation Tests",
+    "endpoint": "/test-assistant-creation",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:38.279Z"
+  },
+  {
+    "name": "Create Assistant All Types",
+    "endpoint": "/test-create-assistant-all-types",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:43.509Z"
+  },
+  {
+    "name": "Update Assistant Basic",
+    "endpoint": "/test-update-assistant-basic",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:48.752Z"
+  },
+  {
+    "name": "Delete Assistant",
+    "endpoint": "/test-delete-assistant",
+    "status": "success",
+    "timestamp": "2025-12-15T10:14:54.236Z"
+  },
+  {
+    "name": "Voice Type Tests",
+    "endpoint": "/test-voice-type",
+    "status": "success",
+    "timestamp": "2025-12-15T10:15:00.251Z"
+  },
+  {
+    "name": "WhatsApp General Tab",
+    "endpoint": "/test-whatsapp-general-tab",
+    "status": "success",
+    "timestamp": "2025-12-15T10:15:05.449Z"
+  },
+  {
+    "name": "Chatbot General Tab",
+    "endpoint": "/test-chatbot-general-tab",
+    "status": "success",
+    "timestamp": "2025-12-15T10:15:10.577Z"
+  },
+  {
+    "name": "SMS General Tab",
+    "endpoint": "/test-sms-general-tab",
+    "status": "success",
+    "timestamp": "2025-12-15T10:15:15.992Z"
+  }
+]

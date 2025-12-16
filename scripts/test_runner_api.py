@@ -13,6 +13,7 @@ TEST_PATHS = {
     "test-login": "tests/login/test_login.py",
     "test-signup": "tests/signup/test_signup.py",  # Update path as needed
     "test-dashboard": "tests/dashboard/test_dashboard.py",  # Update path as needed
+    # Assistant tests
     "test-assistant-creation": "tests/assistants/test_create_assistant.py",
     "test-voice-type": "tests/assistants/updates/voice/",
     "test-create-assistant-all-types": "tests/assistants/test_create_assistant_all_types.py",
@@ -20,7 +21,19 @@ TEST_PATHS = {
     "test-delete-assistant": "tests/assistants/test_delete_assistant.py",
     "test-whatsapp-general-tab": "tests/assistants/updates/whatsapp/test_whatsapp_general_tab.py",
     "test-chatbot-general-tab": "tests/assistants/updates/chat/test_chatbot_general_tab.py",
-    "test-sms-general-tab": "tests/assistants/updates/sms/test_sms_general_tab.py"
+    "test-sms-general-tab": "tests/assistants/updates/sms/test_sms_general_tab.py",
+    # Users tests
+    "test-users-list": "tests/users/test_users_list.py",
+    "test-user-detail": "tests/users/test_user_detail.py",
+    "test-users": "tests/users/",
+    # Contacts tests
+    "test-contacts-list": "tests/contacts/test_contacts_list.py",
+    "test-contact-form": "tests/contacts/test_contact_form.py",
+    "test-contacts": "tests/contacts/",
+    # Knowledge Base tests
+    "test-knowledgebase-list": "tests/knowledgebase/test_knowledgebase_list.py",
+    "test-knowledgebase-form": "tests/knowledgebase/test_knowledgebase_form.py",
+    "test-knowledgebase": "tests/knowledgebase/"
 }
 # Additional endpoints for missing tests
 @app.post("/test-create-assistant-all-types")
@@ -52,6 +65,58 @@ def test_chatbot_general_tab():
 def test_sms_general_tab():
     run_pytest(TEST_PATHS["test-sms-general-tab"])
     return {"test_started": True}
+
+# Users Management Tests
+@app.post("/test-users-list")
+def test_users_list():
+    run_pytest(TEST_PATHS["test-users-list"])
+    return {"test_started": True}
+
+@app.post("/test-user-detail")
+def test_user_detail():
+    run_pytest(TEST_PATHS["test-user-detail"])
+    return {"test_started": True}
+
+@app.post("/test-users")
+def test_users():
+    """Run all users tests"""
+    run_pytest(TEST_PATHS["test-users"])
+    return {"test_started": True}
+
+# Contacts Management Tests
+@app.post("/test-contacts-list")
+def test_contacts_list():
+    run_pytest(TEST_PATHS["test-contacts-list"])
+    return {"test_started": True}
+
+@app.post("/test-contact-form")
+def test_contact_form():
+    run_pytest(TEST_PATHS["test-contact-form"])
+    return {"test_started": True}
+
+@app.post("/test-contacts")
+def test_contacts():
+    """Run all contacts tests"""
+    run_pytest(TEST_PATHS["test-contacts"])
+    return {"test_started": True}
+
+# Knowledge Base Management Tests
+@app.post("/test-knowledgebase-list")
+def test_knowledgebase_list():
+    run_pytest(TEST_PATHS["test-knowledgebase-list"])
+    return {"test_started": True}
+
+@app.post("/test-knowledgebase-form")
+def test_knowledgebase_form():
+    run_pytest(TEST_PATHS["test-knowledgebase-form"])
+    return {"test_started": True}
+
+@app.post("/test-knowledgebase")
+def test_knowledgebase():
+    """Run all knowledge base tests"""
+    run_pytest(TEST_PATHS["test-knowledgebase"])
+    return {"test_started": True}
+
 # Endpoint to run all voice assistant tab tests
 @app.post("/test-voice-type")
 def test_voice_type():

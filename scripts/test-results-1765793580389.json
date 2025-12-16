@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Login Tests",
+    "endpoint": "/test-login",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:00.244Z"
+  },
+  {
+    "name": "Users List Tests",
+    "endpoint": "/test-users-list",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:05.269Z"
+  },
+  {
+    "name": "User Detail Tests",
+    "endpoint": "/test-user-detail",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:10.275Z"
+  },
+  {
+    "name": "Contacts List Tests",
+    "endpoint": "/test-contacts-list",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:15.279Z"
+  },
+  {
+    "name": "Contact Form Tests",
+    "endpoint": "/test-contact-form",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:20.285Z"
+  },
+  {
+    "name": "Assistant Creation Tests",
+    "endpoint": "/test-assistant-creation",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:25.289Z"
+  },
+  {
+    "name": "Create Assistant All Types",
+    "endpoint": "/test-create-assistant-all-types",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:30.293Z"
+  },
+  {
+    "name": "Update Assistant Basic",
+    "endpoint": "/test-update-assistant-basic",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:35.297Z"
+  },
+  {
+    "name": "Delete Assistant",
+    "endpoint": "/test-delete-assistant",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:40.302Z"
+  },
+  {
+    "name": "Voice Type Tests",
+    "endpoint": "/test-voice-type",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:45.307Z"
+  },
+  {
+    "name": "WhatsApp General Tab",
+    "endpoint": "/test-whatsapp-general-tab",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:50.310Z"
+  },
+  {
+    "name": "Chatbot General Tab",
+    "endpoint": "/test-chatbot-general-tab",
+    "status": "failed",
+    "error": "fetch failed",
+    "timestamp": "2025-12-15T10:12:55.314Z"
+  },
+  {
+    "name": "SMS General Tab",
+    "endpoint": "/test-sms-general-tab",
+    "status": "success",
+    "timestamp": "2025-12-15T10:13:00.388Z"
+  }
+]

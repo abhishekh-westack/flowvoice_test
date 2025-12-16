@@ -44,25 +44,25 @@ def context(browser, request):
         if test_failed:
             try:
                 # Upload to GCS first
-                # video_url = gcs.upload_video(str(video_path), request.node.name)
+                video_url = gcs.upload_video(str(video_path), request.node.name)
                 
-                # if video_url and gcs.enabled:
-                #     # Attach GCS URL as link instead of embedding video
-                #     allure.attach(
-                #         video_url,
-                #         name="Video (GCS)",
-                #         attachment_type=allure.attachment_type.URI_LIST,
-                #     )
-                #     print(f"✓ Video URL attached to Allure: {video_url}")
+                if video_url and gcs.enabled:
+                    # Attach GCS URL as link instead of embedding video
+                    allure.attach(
+                        video_url,
+                        name="Video (GCS)",
+                        attachment_type=allure.attachment_type.URI_LIST,
+                    )
+                    print(f"✓ Video URL attached to Allure: {video_url}")
                     
-                #     # Delete local file after successful upload (if configured)
-                #     if DELETE_LOCAL_AFTER_GCS_UPLOAD:
-                #         try:
-                #             os.remove(video_path)
-                #             print(f"✓ Deleted local video (uploaded to GCS)")
-                #         except Exception as del_error:
-                #             print(f"⚠ Could not delete local video: {del_error}")
-                # else:
+                    # Delete local file after successful upload (if configured)
+                    if DELETE_LOCAL_AFTER_GCS_UPLOAD:
+                        try:
+                            os.remove(video_path)
+                            print(f"✓ Deleted local video (uploaded to GCS)")
+                        except Exception as del_error:
+                            print(f"⚠ Could not delete local video: {del_error}")
+                else:
                     # Fallback: embed video if GCS upload failed
                     with open(video_path, "rb") as vf:
                         allure.attach(
